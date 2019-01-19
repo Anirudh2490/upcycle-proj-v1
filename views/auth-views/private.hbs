@@ -1,0 +1,11 @@
+{{#if user}}
+  <h4 style="color:rgb(220,20,20)">You are logged in</h4>
+  <div>
+    <a href="/">Index</a>
+  </div>
+{{/if}}
+<br>
+<!-- comment -->
+<form action="/logout" method="GET">
+  <button type="submit">Logout</button>
+</form>
