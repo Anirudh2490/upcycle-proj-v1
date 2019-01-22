@@ -7,7 +7,7 @@ const mongoose     = require('mongoose');
 
 const UserSchema = mongoose.Schema({
   //As I am using radiobuttons we dont need to use enum ?
-  //category: {type: String, enum: ['Designer', 'Seller']}, //Designer or Seller
+  category: {type: String, enum: ['designer', 'seller']}, //Designer or Seller
   // category: {type: String},
   fullname: {type: String, required: true},
   username: {type: String, required: true},
