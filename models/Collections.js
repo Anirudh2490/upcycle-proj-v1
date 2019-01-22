@@ -1,6 +1,6 @@
 const mongoose     = require('mongoose');
 
-const MaterialsSchema = mongoose.Schema({
+const CollectionsSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   materialType: {type: String, enum: ['Cotton', 'Wool', 'Denim', 'Linen', 'Jersey', 'Silk', 'Polycotton' , 'Velvet', 'Synthetics', 'Other'], required: true},
   cost: {type: String, required: true},
