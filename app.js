@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const bodyParser    = require('body-parser');
-const cookieParser  = require('cookie-parser');
 const express       = require('express');
 const favicon       = require('serve-favicon');
 const hbs           = require('hbs');
@@ -36,12 +35,13 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 app.use(session({
   secret: "our-passport-local-strategy-app",
   resave: true,
   saveUninitialized: true
 }));
+
 passport.serializeUser((user, cb) => {
   cb(null, user._id);
 });
@@ -55,8 +55,9 @@ passport.deserializeUser((id, cb) => {
 
 app.use(flash())
 
-passport.use(new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, user) => {
+passport.use(new LocalStrategy({ usernameField: "email"},
+  (param1, password, next) => {
+  User.findOne({ email:param1 }, (err, user) => {
     if (err) {
       return next(err);
     }
@@ -89,8 +90,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 const auth = require('./routes/auth')
+const collections = require('./routes/collections')
 app.use('/', index);
 app.use('/', auth)
+app.use('/', collections)
+
 
 
 module.exports = app;

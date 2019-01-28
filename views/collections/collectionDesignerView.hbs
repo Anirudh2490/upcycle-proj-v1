@@ -1,0 +1,53 @@
+{{!-- This is the view that only the
+designer can see once he/she has submitted the collection. --}}
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">{{user.fullname}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/viewCollection">View collections <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/enterCollection">Create a new collection</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/private">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h2 class="title">Designer profile</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <img style="width:100%" src="./images/pp.png">
+      </div>
+      <div class="col-9 profile">
+        <h3 class="title-2">{{user.fullname}}</h3>
+        <h3 class="title-2">{{user.email}}</h3>
+  
+
+        <form action="/sellClothesForm/" method="post">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+</body>

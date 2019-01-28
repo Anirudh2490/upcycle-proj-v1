@@ -6,3 +6,18 @@ the enterCollection.hbs page --}}
 
 <h4 style="color:rgb(220,20,20)">You are logged in</h4>
 <h1>viewCollection</h1>
+
+<div>
+<h2>Collections</h2>
+  {{#each collections}}
+    <div> 
+  <div>
+  <h4>Material Type: {{this.materialType}}</h4> 
+  <h4>Cost: {{this.cost}}</h4>
+  <h4>Weight: {{this.weight}}</h4>
+  <br>
+  </div>
+  
+  </div>
+  {{/each}}
+</div>
