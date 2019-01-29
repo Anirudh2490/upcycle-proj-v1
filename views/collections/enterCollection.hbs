@@ -1,0 +1,85 @@
+<h1> Start collecting fabric for your collection </h1>
+  <form action="/enterCollection" method="post">
+    <div class="form-group">
+    <label for="exampleTextarea">Name your collection</label>
+    <input type="text" class="form-control" placeholder="Summer essentials? Winter collection?" aria-label="name" aria-describedby="basic-addon1">
+   </div>
+   <div class="form-group">
+    <label for="exampleTextarea">Story behind the collection</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="What has inspired this collection? "></textarea>
+   </div>
+   <div class="form-group">
+     <div class="form-group">
+    <label for="exampleInputFile"> Upload images of the clothing prototypes/ sketches of your collection</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">You may choose multiple photos</small>
+  </div>
+     <div class="container">
+        <table id="myTable" class=" table order-list">
+            <td>Type of Fabric</td>
+            <td>Amount of Fabric needed</td>
+            <td>I'm willing to pay</td>
+          <tbody>
+              <tr>
+               <td class="col-sm-4">
+                 <select class="form-control" id="fabricTypes">
+                  <option>Denim</option>
+                  <option>Wool</option>
+                  <option>Cotton</option>
+                  <option>Synthetics</option>
+                   <option>Nylon</option>
+                 </select>
+               </td>
+               <td class="col-sm-4">
+                <select class="form-control" id="fabricWeight">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                 </select>per KG
+               </td>
+               <td class="col-sm-4">
+                <input type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> Euros/KG
+               </td>
+              <td class="col-sm-2"><a class="deleteRow"></a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+      </table>
+    </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+{{!-- This file, we will have the designer enter details of the collection
+1. Type of Fabric
+2. Quantity of Fabric needed
+3. Amount of money per unit of Fabric (ex. Per Kg of Denim costs ??)
+4. Description of the collection
+5. Upload Image of Fabric 
+<h4 style="color:rgb(220,20,20)">You are logged in</h4>
+<h1>enterCollection</h1>
+
+<form action="/enterCollection" method="post">
+  <label>Material Type</label>
+  <input type="text" name="materialType">
+  <label>Cost</label>
+  <input type="text" name="cost">
+  <label>weight</label>
+  <input type="text" name="weight">
+  
+  <button>Create collection</button>
+
+
+</form>
+
+--}}

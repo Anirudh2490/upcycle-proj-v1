@@ -1,0 +1,23 @@
+{{!-- In this page, the designer will be able to view the collection he/she created using 
+the enterCollection.hbs page --}}
+{{!-- 1. About the collection
+2. Images of the collection
+3. Fabrics needed --}}
+
+<h4 style="color:rgb(220,20,20)">You are logged in</h4>
+<h1>viewCollection</h1>
+
+<div>
+<h2>Collections</h2>
+  {{#each collections}}
+    <div> 
+  <div>
+  <h4>Material Type: {{this.materialType}}</h4> 
+  <h4>Cost: {{this.cost}}</h4>
+  <h4>Weight: {{this.weight}}</h4>
+  <br>
+  </div>
+  
+  </div>
+  {{/each}}
+</div>

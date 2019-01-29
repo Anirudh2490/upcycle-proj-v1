@@ -1,4 +1,69 @@
-body {
+.title{
+  text-align: center;
+  margin: 0 0 45px 0;
+  font-family: 'Roboto Slab', serif;
+
+}
+
+.title-2{
+  font-family: 'Roboto Slab', serif;
+  position: relative;
+  left:15px;
+  top:15px;
+ 
+}
+
+.title2>h2{
+  font-size: 0.5em;
+}
+
+.profile{
+  position: relative;
+
+  border: 1px solid black;
+}
+
+.nav{
+  border-radius: 0;
+}
+
+.nav-item{
+  position: relative;
+  left:100%;
+  padding: 3px 15px;
+}
+
+.navbar-brand{
+  position: relative;
+  top: 12px;
+}
+
+#form-container{
+  position: relative;
+  left: 37%;
+  top: 50px;
+  font-family: 'Krub', sans-serif;
+
+}
+
+.form-gen-container{
+  width: 500px;
+  clear: both;
+}
+
+.form-gen-container .singup-input{
+  width: 250px;
+  clear: both;
+}
+
+.label-form{
+  display: inline-block;
+  width:100px;
+  text-align: right;
+  margin: 5px 10px;
+}
+
+/*body {
   background-color: rgb(255, 255, 255);
   font: 400 1em/1.38 Lato;
   color: rgb(27, 45, 77);
@@ -234,6 +299,7 @@ body {
   white-space: normal;
 }
 
+<<<<<<< HEAD
 .box{
   padding:60px 0px;
 }
@@ -282,3 +348,6 @@ a {
   font-size: 22px;
   color: black;
 }
+=======
+*/
+>>>>>>> routes
