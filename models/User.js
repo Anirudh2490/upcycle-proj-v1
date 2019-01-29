@@ -10,7 +10,9 @@ const UserSchema = mongoose.Schema({
   fullname: {type: String, required: true},
   email: {type: String, required: true},
   password: {type: String, required: true},
-  profilePicture: String,
+  currentLocation: String,
+  profilePicturePath: String,
+  profilePictureName:String,
   about: String,
   created: { type: Date, default: Date.now}
 });

@@ -1,0 +1,27 @@
+<form action="/signup" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+   <div class="form-group">
+    <label for="exampleInputLocation1">Current Location</label>
+    <input type="text" name="currentLocation" class="form-control" id="exampleInputLocation1" placeholder="Ex. Berlin">
+  </div>
+  <div class="form-group">
+    <label for="exampleTextarea">About</label>
+    <textarea class="form-control" name="about" id="exampleTextarea" rows="3" placeholder="Tell everyone a bit about yourself, your design philosophy and what inspires you as a fashion designer!"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" name="profilepic" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </div>
+  <input type="radio" name="category" value="designer"> Designer<br>
+  <input type="radio" name="category" value="seller"> Seller<br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

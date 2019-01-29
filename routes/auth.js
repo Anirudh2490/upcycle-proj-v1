@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = express.Router();
 const passport = require("passport");
 const ensureLogin = require("connect-ensure-login");
+const uploadCloud = require('../config/cloudinary.js');
 
 //import User.js model
 const User = require('../models/User')
@@ -22,18 +23,24 @@ function checkCategory(category) {
     }
   }
 }
-
-// Signup routes
-
-authRoutes.get('/signup', (req, res, next) => {
-  res.render('auth-views/signup')
+authRoutes.get('/signup-designer', (req, res, next) => {
+  res.render('auth-views/signup-designer')
 })
 
-authRoutes.post('/signup', (req, res, next) => {
+authRoutes.get('/signup-user', (req, res, next) => {
+  res.render('auth-views/signup-user')
+})
+
+authRoutes.post('/signup', uploadCloud.single('profilepic'), (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  const fullname = req.body.fullname
+  const fullname = "test" //req.body.fullname
   const category = req.body.category;
+  const currentLocation = req.body.currentLocation;
+  const about = req.body.about;
+  const profilePicturePath = req.file.url;
+  const profilePictureName = req.file.originalname;
+  
 
   if (email === "" || password === "") {
     res.render('auth-views/signup', { message: 'Indicate user name and password' })
@@ -52,6 +59,10 @@ authRoutes.post('/signup', (req, res, next) => {
       fullname: fullname,
       email: email,
       category:category,
+      currentLocation:currentLocation,
+      about:about,
+      profilePicturePath:profilePicturePath,
+      profilePictureName:profilePictureName
     })
     newUser.save((err) => {
       if (err) {
@@ -59,18 +70,11 @@ authRoutes.post('/signup', (req, res, next) => {
           message: 'Something went wrong, please try again later.'
         })
       } else {
-        // res.redirect('/')
-        req.login(newUser, () => {
-          res.redirect('/private')
-        })
-        
+        res.redirect('/login')
       }
     })
   })
 })
-
-// Login routes
-
 authRoutes.get('/login',(req,res)=>{
   res.render('auth-views/login')
 })
@@ -110,20 +114,15 @@ authRoutes.post('/enterCollection',(req,res,next)=>{
       res.redirect('/private')
     }
   })
-  
 })
-
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/private",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
-
 authRoutes.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
 });
-
-
 module.exports = authRoutes;
