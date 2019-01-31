@@ -1,0 +1,69 @@
+<div>
+    <form action="/signup" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+       <div class="form-group">
+        <label for="exampleInputLocation1">Phone number</label>
+        <input type="number" name="phone" class="form-control" id="phone">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputLocation1">Zip Code</label>
+        <input type="number" name="zipcode" class="form-control" id="zipcode">
+      </div>
+      <table id="myTable" class=" table order-list">
+            <td>Type of Fabric</td>
+            <td>Amount of Fabric available</td>
+            <td>Upload Images of Clothes</td>
+          <tbody>
+              <tr>
+               <td class="col-sm-4">
+                 <select class="form-control" id="fabricTypes">
+                  <option>Denim</option>
+                  <option>Wool</option>
+                  <option>Cotton</option>
+                  <option>Synthetics</option>
+                   <option>Nylon</option>
+                 </select>
+               </td>
+               <td class="col-sm-4">
+                <select class="form-control" id="fabricWeight">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                 </select>per KG
+               </td>
+               <td class="col-sm-4">
+                <label for="exampleInputFile">Upload Fabric Images</label>
+                <input type="file" name="profilepic" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+               </td>
+              <td class="col-sm-2"><a class="deleteRow"></a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+      </table>
+      <button type="submit" class="btn btn-primary">Submit</button>
+     </form>            
+   <footer></footer>
+      
+    </div>

@@ -31,7 +31,7 @@ authRoutes.get('/signup-user', (req, res, next) => {
   res.render('auth-views/signup-user')
 })
 
-authRoutes.post('/signup', uploadCloud.single('profilepic'), (req, res, next) => {
+authRoutes.post('/signup-designer', uploadCloud.single('profilepic'), (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const fullname = "test" //req.body.fullname
@@ -83,38 +83,6 @@ authRoutes.get('/login',(req,res)=>{
       res.render("user/private", {user: req.user});
  });
 
-
-authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
-  console.log(req.user)
-  res.render('collections/collectionDesignerView',{user:req.user})
-  })
-
-authRoutes.get('/enterCollection', checkCategory('designer'), (req, res, next) => {
-    res.render("collections/enterCollection");
-  
-});
-
-authRoutes.post('/enterCollection',(req,res,next)=>{
-  const materialType = req.body.materialType;
-  const cost = req.body.cost;
-  const weight = req.body.weight;
-
-  const newCollection = new Collection({
-    materialType: materialType,
-    cost: cost,
-    weight: weight,
-    owner: req.user._id
-  }) 
-  newCollection.save((err) => {
-    if (err) {
-      res.render('auth-views/enterCollection', {
-        message: 'Something went wrong, please try again later.'
-      })
-    } else {
-      res.redirect('/private')
-    }
-  })
-})
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/private",
   failureRedirect: "/login",

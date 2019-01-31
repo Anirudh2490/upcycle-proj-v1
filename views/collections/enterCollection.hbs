@@ -1,17 +1,21 @@
+
+  {{#if message}}
+    <div style="color:red" class="error-message">{{ message }}</div>
+  {{/if}}
 <h1> Start collecting fabric for your collection </h1>
-  <form action="/enterCollection" method="post">
+  <form action="/enterCollection" method="post" enctype="multipart/form-data">
     <div class="form-group">
     <label for="exampleTextarea">Name your collection</label>
-    <input type="text" class="form-control" placeholder="Summer essentials? Winter collection?" aria-label="name" aria-describedby="basic-addon1">
+    <input name="collectionName" type="text" class="form-control" placeholder="Summer essentials? Winter collection?" aria-label="name" aria-describedby="basic-addon1">
    </div>
    <div class="form-group">
     <label for="exampleTextarea">Story behind the collection</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="What has inspired this collection? "></textarea>
+    <textarea name="storyBehind" class="form-control" id="exampleTextarea" rows="3" placeholder="What has inspired this collection? "></textarea>
    </div>
    <div class="form-group">
      <div class="form-group">
     <label for="exampleInputFile"> Upload images of the clothing prototypes/ sketches of your collection</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <input type="file" name='collectionPic' class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">You may choose multiple photos</small>
   </div>
      <div class="container">
@@ -22,7 +26,7 @@
           <tbody>
               <tr>
                <td class="col-sm-4">
-                 <select class="form-control" id="fabricTypes">
+                 <select name="fabricTypes" class="form-control" id="fabricTypes">
                   <option>Denim</option>
                   <option>Wool</option>
                   <option>Cotton</option>
@@ -31,7 +35,7 @@
                  </select>
                </td>
                <td class="col-sm-4">
-                <select class="form-control" id="fabricWeight">
+                <select name="fabricWeight" class="form-control" id="fabricWeight">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -39,7 +43,7 @@
                  </select>per KG
                </td>
                <td class="col-sm-4">
-                <input type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> Euros/KG
+                <input name="amount" type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> Euros/KG
                </td>
               <td class="col-sm-2"><a class="deleteRow"></a>
                 </td>

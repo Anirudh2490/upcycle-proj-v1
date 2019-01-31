@@ -1,5 +1,61 @@
+<div class="container">
+      <header class="d-flex justify-content-between flex-wrap">
+        <h1>Re-Worn</h1>
+          <nav>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Designers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+            </ul>
+          </nav>
+      </header>
+
+      <h1>HELLO {{user.fullname}}</h1>
+      
+<!--      <section class="featured"></section>-->
+      
+      <section class="row">
+        <div class="col-lg-4 profile-info">
+          <img class="float-left" src="nickpettit.jpg" alt="Photograph of Nick Pettit">
+          <h2>Nick Pettit</h2>
+          <p class="text-muted">Orlando, FL</p>
+        </div>
+        <div class="col-lg-5">
+          <p>Hi, my name is {{user.email}} I'm a teacher at Treehouse and I enjoy designing websites.</p>
+        </div>
+        <div class="col-lg-3">
+          <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
+        </div>
+      </section>
+      <br>
+      <br>
+      <h3>Check-out my collections</h3>
+      {{#each collections}}
+      <section class="row">
+        <div class="card" style="width: 18rem;">
+          <img cl ass="card-img-top" src={{this.collectionPicturePath}} width="50%" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{this.collectionName}}</h5>
+            <p class="card-text">{{this.storyBehind}}</p>
+          <a href="/viewCollection/{{this._id}}" class="btn btn-primary">Contribute to collection</a>
+    
+         
+          </div>
+        </div>
+      </section>
+       {{/each}}
+
 {{!-- This is the view that only the
-designer can see once he/she has submitted the collection. --}}
+designer can see once he/she has submitted the collection. 
 
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
@@ -51,3 +107,5 @@ designer can see once he/she has submitted the collection. --}}
   </div>
   <div>
 </body>
+
+--}}
