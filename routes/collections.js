@@ -49,6 +49,10 @@ authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next)
 
 });
 
+authRoutes.get('/collections', (req, res, next) => {
+  res.render("collections/publicView/collections");
+});
+
 authRoutes.post('/enterCollection', uploadCloud.single('collectionPic'),(req,res,next)=>{
   const collectionName = req.body.collectionName;
   const storyBehind = req.body.storyBehind;
