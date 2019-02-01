@@ -1,14 +1,81 @@
-header {
-  padding: 2rem 0;
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  background-color: #ffffff;
+  margin-top: 20px;
 }
-.featured {
-  height: 500px;
-  background: #F99;
-  margin-bottom: 2rem;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.3;
+    font-weight: 700;
+    font-family: $font-ubuntu;
 }
-.profile-info img {
-  max-width: 6rem;
-  max-height: 6rem;
-  border-radius: 1rem;
-  margin: -0.5rem 1rem 0 0;
+
+.welcome_area .hero-content h6 {
+  font-size: 18px;
+  color: #787878;
+  margin-bottom: 10px;
+}
+
+
+p {
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 400;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.essence-btn {
+  display: inline-block;
+  min-width: 170px;
+  height: 50px;
+  color: white;
+  border: none;
+  border-radius: 0;
+  padding: 0 40px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 50px;
+  background-color: blue;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  &:hover,
+  &:focus {
+      color: white;
+      background-color: red;
+  }
+}
+
+
+.welcome_area {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 600px;
+}
+
+.hero-content {
+  margin-top: 200px;
+}
+
+.bg-img {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.welcome_area .hero-content h2 {
+  font-size: 60px;
+  color: #000000;
+  margin-bottom: 50px;
 }
