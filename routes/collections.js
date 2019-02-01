@@ -49,9 +49,24 @@ authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next)
 
 });
 
+// <------------ All the public views are here ------------------>
+
 authRoutes.get('/collections', (req, res, next) => {
-  res.render("collections/publicView/collections");
+   res.render("collections/publicView/collections");
 });
+
+authRoutes.get('/test', (req, res, next) => {
+  res.render("collections/publicView/testPage");
+});
+
+authRoutes.get('/collections/:collectionId', (req, res, next) => {
+  //res.render("collections/publicView/collections");
+  Collection.findOne({_id:req.params.collectionId}).then(collections=>{
+  res.render("collections/publicView/collectionPublicView", {collections:collections});
+  })  
+});
+
+// <------------ End of public views are here ------------------>
 
 authRoutes.post('/enterCollection', uploadCloud.single('collectionPic'),(req,res,next)=>{
   const collectionName = req.body.collectionName;
