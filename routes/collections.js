@@ -55,6 +55,10 @@ authRoutes.get('/collections', (req, res, next) => {
    res.render("collections/publicView/collections");
 });
 
+authRoutes.get('/designers', (req, res, next) => {
+  res.render("collections/publicView/designerListPage");
+});
+
 authRoutes.get('/test', (req, res, next) => {
   res.render("collections/publicView/testPage");
 });
