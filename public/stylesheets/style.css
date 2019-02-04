@@ -5,6 +5,11 @@ body {
   margin-top: 20px;
 }
 
+.jumbotron {
+  background-image: url('../img/jumbo-bg.jpg');
+  background-size: cover;
+}
+
 .container.collectionCard  {
   margin-top: 50px;
   box-shadow: 0 0 30px black;

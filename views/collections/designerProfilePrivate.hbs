@@ -1,58 +1,4 @@
 <div class="container">
-      <header class="d-flex justify-content-between flex-wrap">
-        <h1>Re-Worn</h1>
-          <nav>
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Designers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-              </li>
-            </ul>
-          </nav>
-      </header>
-
-      <h1>HELLO {{user.[0].fullname}}</h1>
-      
-<!--      <section class="featured"></section>-->
-      
-      <section class="row">
-        <div class="col-lg-4 profile-info">
-          <img class="float-left" src="nickpettit.jpg" alt="Photograph of Nick Pettit">
-          <h2>Nick Pettit</h2>
-          <p class="text-muted">Orlando, FL</p>
-        </div>
-        <div class="col-lg-5">
-          <p>Hi, my name is {{user.email}} I'm a teacher at Treehouse and I enjoy designing websites.</p>
-        </div>
-        <div class="col-lg-3">
-          <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
-        </div>
-      </section>
-      <br>
-      <br>
-      <h3>Check-out my collections</h3>
-      {{#each collections}}
-      <section class="row">
-        <div class="card" style="width: 18rem;">
-          <img cl ass="card-img-top" src={{this.collectionPicturePath}} width="50%" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{this.collectionName}}</h5>
-            <p class="card-text">{{this.storyBehind}}</p>
-          <a href="/viewCollection/{{this._id}}" class="btn btn-primary">Contribute to collection</a>    
-          </div>
-        </div>
-      </section>
-       {{/each}}
-  
-  <div class="container">
 <header class="header_area">
   <nav class="navbar">
     <div class="container">
@@ -148,10 +94,9 @@
     				<thead>
 						<tr>
 							<th style="width:50%">Fabric requirements</th>
-              <th style="width:10%">Quantity (KGs)</th>
+              <th style="width:10%">Total Quantity TBR(KGs)</th>
 							<th style="width:10%">Price per KG</th>
-							<th style="width:20%">Upsell your fabric</th>
-							<th style="width:10%">Subtotal</th>
+							<th style="width:10%">Subtotal by Fabric</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -168,9 +113,6 @@
 							</td>
 							<td data-th="Quantity"><br>20 KGs</td>
 							<td data-th="Subtotal" class="text-center"><br>1.99</td>
-              <td data-th="Price"><br>
-								<input type="number" class="text-center" value="0.85"> KG</span>
-							</td>
               <td data-th="Subtotal" class="text-center"><br>1.99</td>
 						</tr>
 					</tbody>
@@ -188,9 +130,6 @@
 							</td>
 							<td data-th="Quantity"><br>20 KGs</td>
 							<td data-th="Subtotal" class="text-center"><br>1.99</td>
-              <td data-th="Price"><br>
-								<input type="number" class="form-control text-center" value="1">
-							</td>
               <td data-th="Subtotal" class="text-center"><br>1.99</td>
 						</tr>
 					</tbody>
@@ -202,16 +141,133 @@
 					<tfoot>
 						<tr>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-							<td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">Back this project</button></td>
+							<td class="hidden-xs text-center"><strong>Total Contributions thus far -  $1.99</strong></td>
+							<td><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">Edit Project Details</button></td>
 						</tr>
 					</tfoot>
 				</table>
+<section>
+  <div class="container">
+    <!-- schedule -->
+      <h1 id="schedule" class="display-4 text-center my-5 text-muted">23 Contributions Made</h1>
+      <p>17 collected, 5 in process, 1 rejected</p>
+
+      <ul class="list-group">
+        <li class="list-group-item-danger">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+          </div>
+          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
+          <p class="mb-1">Message/Story</p>
+          <br>
+            <section class="gallery d-flex flex-wrap">
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+          </section>
+          <br><br>
+        </li>
+        <li class="list-group-item-warning">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+          </div>
+          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
+          <p class="mb-1">Message/Story</p>
+          <br>
+            <section class="gallery d-flex flex-wrap">
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+          </section>
+          <br><br>
+        </li>
+        </li>
+        <li class="list-group-item-success">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+          </div>
+          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
+          <p class="mb-1">Message/Story</p>
+          <br>
+            <section class="gallery d-flex flex-wrap">
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+          </section>
+          <br><br>
+        </li>
+        </li>
+        <li class="list-group-item-warning-light">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
+          </div>
+          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
+          <p class="mb-1">Message/Story</p>
+          <br>
+            <section class="gallery d-flex flex-wrap">
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+          </section>
+          <br><br>
+          <button>Set Approval Status</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script>
+            $(() => {
+                'use strict';
+                $('button').click(function() {
+                    $(this).toggleClass('pressed');
+                });
+            });
+        </script>
+        <style>
+            button {
+                background-color: white;
+            }
+
+            button.pressed {
+                background-color:#dff0d8;x`
+            }
+        </style>
+        <br>
+        </li>
+        </li>
+      </ul><!-- /schedule -->
+  </div>
+</section>
 </div>
 
 </section>
 <br>
 <br>
+
+
+
+  
 
     <!--=====================================
         FORM MODAL
