@@ -16,7 +16,7 @@ const bcryptSalt = 10;
 
 function checkCategory(category) {
   return function(req, res, next) {
-    if (req.isAuthenticated() && req.user.category === category) {
+    if (req.isAuthenticated()) {
       return next();
     } else {
       res.redirect('/login')
@@ -32,10 +32,12 @@ authRoutes.get('/signup-user', (req, res, next) => {
 })
 
 authRoutes.post('/signup-designer', uploadCloud.single('profilepic'), (req, res, next) => {
+  console.log('DEBUG - req.body', req.body)
+
   const email = req.body.email;
   const password = req.body.password;
-  const fullname = "test" //req.body.fullname
-  const category = req.body.category;
+  const fullname = req.body.fullname
+  //const category = 'designer';
   const currentLocation = req.body.currentLocation;
   const about = req.body.about;
   const profilePicturePath = req.file.url;
@@ -43,12 +45,77 @@ authRoutes.post('/signup-designer', uploadCloud.single('profilepic'), (req, res,
   
 
   if (email === "" || password === "") {
-    res.render('auth-views/signup', { message: 'Indicate user name and password' })
+    res.render('auth-views/signup-designer', { message: 'Indicate user name and password' })
     return;
   }
   User.findOne({ email:email }).then(user => {
     if (user !== null) {
-      res.render('auth-views/signup', { message: 'The username already exists' })
+      res.render('auth-views/signup-designer', { message: 'The username already exists' })
+      return
+    }
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+
+    const newUser = new User({
+      password: hashPass,
+      fullname: fullname,
+      email: email,
+      //category:category,
+      currentLocation:currentLocation,
+      about:about,
+      profilePicturePath:profilePicturePath,
+      profilePictureName:profilePictureName
+    })
+
+    console.log('DEBUG - newUser', newUser)
+
+    newUser.save()
+    .then(()=> {
+    console.log('DEBUG - newUser', newUser)
+
+      req.login(newUser, () => {
+        res.redirect('/designer')
+      })
+    })
+    .catch((err) => {
+        res.render('auth-views/signup-user', {
+        message: 'Something went wrong, please try again later.'
+        })
+      })
+
+
+    // newUser.save((err) => {
+    //   if (err) {
+    //     res.render('auth-views/signup', {
+    //       message: 'Something went wrong, please try again later.'
+    //     })
+    //   } else {
+    //     res.redirect('/login')
+    //   }
+    // })
+  })
+})
+
+/* --------- v Sign-up seller v ---------- */
+
+authRoutes.post('/signup-user', uploadCloud.single('profilepic'), (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const fullname = req.body.fullname
+  const category = 'seller'
+  const currentLocation = req.body.currentLocation;
+  const about = req.body.about;
+  const profilePicturePath = req.file.url;
+  const profilePictureName = req.file.originalname;
+  
+
+  if (email === "" || password === "") {
+    res.render('auth-views/signup-user', { message: 'Indicate user name and password' })
+    return;
+  }
+  User.findOne({ email:email }).then(user => {
+    if (user !== null) {
+      res.render('auth-views/signup-user', { message: 'The username already exists' })
       return
     }
     const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -66,25 +133,26 @@ authRoutes.post('/signup-designer', uploadCloud.single('profilepic'), (req, res,
     })
     newUser.save((err) => {
       if (err) {
-        res.render('auth-views/signup', {
+        res.render('auth-views/signup-user', {
           message: 'Something went wrong, please try again later.'
         })
       } else {
-        res.redirect('/login')
+        res.redirect('/sellClothesForm')
       }
     })
   })
 })
+
+/* --------- ^ Sign-up seller ^ ---------- */
+
+
+
 authRoutes.get('/login',(req,res)=>{
   res.render('auth-views/login')
 })
 
- authRoutes.get('/private', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-      res.render("user/private", {user: req.user});
- });
-
 authRoutes.post("/login", passport.authenticate("local", {
-  successRedirect: "/private",
+  successRedirect: "/designer",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true

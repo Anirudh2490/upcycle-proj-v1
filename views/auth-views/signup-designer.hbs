@@ -1,4 +1,8 @@
-<form action="/signup-designer" method="POST" enctype="multipart/form-data">
+  <form action="/signup-designer" method="POST" enctype="multipart/form-data">
+     <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="fullname" class="form-control" id="name">
+      </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -21,7 +25,5 @@
     <input type="file" name="profilepic" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </div>
-  <input type="radio" name="category" value="designer"> Designer<br>
-  <input type="radio" name="category" value="seller"> Seller<br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

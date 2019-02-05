@@ -39,7 +39,7 @@ authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req,
   })
 });
 
-  authRoutes.get('/enterCollection', checkCategory('designer'), (req, res, next) => {
+  authRoutes.get('/enterCollection', checkCategory(), (req, res, next) => {
     res.render("collections/enterCollection");
   
 });
@@ -47,6 +47,33 @@ authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req,
 authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next) => {
   res.render("collections/collectionDetails");
 
+});
+
+authRoutes.get('/sellClothesForm', checkCategory('seller'), (req, res, next) => {
+  res.render("seller/sellClothesForm");
+
+});
+
+authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
+  Collection.find({owner: req.user._id})
+    .then((collections)=>{
+      console.log(collections)
+      User.find({_id:req.user._id})
+      .then((user)=>{
+        console.log(user)
+        res.render('collections/collectionDesignerView',{
+          collections: collections, 
+          user: user[0]
+        })
+      })
+    })
+  })
+
+authRoutes.get('/designer', checkCategory(), (req, res, next) => {
+  User.findOne({_id:req.user._id}).then((designer)=>{
+    console.log('Found user',designer)
+    res.render("collections/designerProfilePrivate", {designer:designer});
+    })  
 });
 
 // <------------ All the public views are here ------------------>
@@ -59,9 +86,14 @@ authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
+authRoutes.get('/designerProfileView', (req, res, next) => {
+  res.render("collections/publicView/designerProfileView");
+});
+
 authRoutes.get('/test', (req, res, next) => {
   res.render("collections/publicView/testPage");
 });
+  
 
 authRoutes.get('/collections/:collectionId', (req, res, next) => {
   //res.render("collections/publicView/collections");
