@@ -92,6 +92,7 @@ authRoutes.post('/enterCollection', uploadCloud.single('collectionPic'),(req,res
     collectionPictureName,collectionPictureName
 
   })
+  
   newCollection.save((err) => {
     if (err) {
       res.render('collections/enterCollection', {
