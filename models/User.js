@@ -6,7 +6,7 @@ const mongoose     = require('mongoose');
 // var uniqueValidator = require('mongoose-unique-validator');
 
 const UserSchema = mongoose.Schema({
-  category: {type: String, enum: ['designer', 'seller']}, //Designer or Seller
+  //category: {type: String, enum: ['designer', 'seller']}, //Designer or Seller
   fullname: {type: String, required: true},
   email: {type: String, required: true},
   password: {type: String, required: true},

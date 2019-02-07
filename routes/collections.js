@@ -18,20 +18,20 @@ function checkCategory(category) {
   }
 } 
 
-authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
-  Collection.find({owner: req.user._id})
-    .then((collections)=>{
-      console.log(collections)
-      User.find({_id:req.user._id})
-      .then((user)=>{
-        console.log(user)
-        res.render('collections/collectionDesignerView',{
-          collections: collections, 
-          user: user[0]
-        })
-      })
-    })
-  })
+// authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
+//   Collection.find({owner: req.user._id})
+//     .then((collections)=>{
+//       console.log(collections)
+//       User.find({_id:req.user._id})
+//       .then((user)=>{
+//         console.log(user)
+//         res.render('collections/collectionDesignerView',{
+//           collections: collections, 
+//           user: user[0]
+//         })
+//       })
+//     })
+//   })
 
 authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req, res, next) => {
   Collection.findOne({_id:req.params.collectionId}).then(collections=>{
@@ -39,7 +39,7 @@ authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req,
   })
 });
 
-  authRoutes.get('/enterCollection', checkCategory('designer'), (req, res, next) => {
+  authRoutes.get('/enterCollection', checkCategory(), (req, res, next) => {
     res.render("collections/enterCollection");
   
 });
@@ -48,6 +48,37 @@ authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next)
   res.render("collections/collectionDetails");
 
 });
+
+authRoutes.get('/sellClothesForm', checkCategory('seller'), (req, res, next) => {
+  res.render("seller/sellClothesForm");
+
+});
+
+// authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
+//   Collection.find({owner: req.user._id})
+//     .then((collections)=>{
+//       console.log(collections)
+//       User.find({_id:req.user._id})
+//       .then((user)=>{
+//         console.log(user)
+//         res.render('collections/collectionDesignerView',{
+//           collections: collections, 
+//           user: user[0]
+//         })
+//       })
+//     })
+//   })
+
+authRoutes.get('/designer', checkCategory(), (req, res, next) => {
+  User.findOne({_id:req.user._id}).then((designer)=>{
+    Collection.find({owner:req.user._id}).then((collection)=>{
+      res.render("collections/designerProfilePrivate", {
+        designer:designer,
+        collection:collection
+        });
+      })
+    })  
+  });
 
 // <------------ All the public views are here ------------------>
 
@@ -59,9 +90,14 @@ authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
+authRoutes.get('/designerProfileView', (req, res, next) => {
+  res.render("collections/publicView/designerProfileView");
+});
+
 authRoutes.get('/test', (req, res, next) => {
   res.render("collections/publicView/testPage");
 });
+  
 
 authRoutes.get('/collections/:collectionId', (req, res, next) => {
   //res.render("collections/publicView/collections");
@@ -72,14 +108,14 @@ authRoutes.get('/collections/:collectionId', (req, res, next) => {
 
 // <------------ End of public views are here ------------------>
 
-authRoutes.post('/enterCollection', uploadCloud.single('collectionPic'),(req,res,next)=>{
+authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,next)=>{
   const collectionName = req.body.collectionName;
   const storyBehind = req.body.storyBehind;
   const fabricTypes = req.body.fabricTypes;
   const fabricWeight = req.body.fabricWeight;
   const amount = req.body.amount;
-  const collectionPicturePath = req.file.url;
-  const collectionPictureName = req.file.originalname;
+  const collectionPicturePath = req.files.map((f) => f.url);
+  const collectionPictureName = req.files.map((f) => f.originalname);
 
   const newCollection = new Collection({
     collectionName: collectionName,
@@ -99,7 +135,7 @@ authRoutes.post('/enterCollection', uploadCloud.single('collectionPic'),(req,res
         message: 'Something went wrong, please try again later.'
       })
     } else {
-      res.redirect('/collectionDesignerView')
+      res.redirect('/designer')
     }
   })
 })

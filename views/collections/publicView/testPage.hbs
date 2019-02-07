@@ -149,7 +149,6 @@
 						</tr>
 					</tbody>
 
-  
 	{{!--------    End of products		 ------}}
 
 
@@ -165,14 +164,20 @@
   <div class="container">
     <!-- schedule -->
       <h1 id="schedule" class="display-4 text-center my-5 text-muted"><span id="totalContributions">23</span> Contributions Made</h1>
+      <p><span class="processed">17</span> collected, <span class="pre-approved">5</span> in process, <span class="rejected">1</span> rejected</p>
       <script>
         $(document).ready(function() {
-          $(#totalContributions).text()
-          
-          })
+         $('.btn-api').click(function () { 
+          var $processed = $(".processed");
+          var $preApproved = $(".pre-approved");
+          var $rejected = $(".rejected")
+          console.log("processing count")
+          $processed.text(() => $('.list-group-item-success').length);
+          $preApproved.text(() => $('.list-group-item-warning').length);
+          $rejected.text(() => $('.list-group-item-danger').length);
+        })
+        });
       </script>
-      <p>17 collected, 5 in process, 1 rejected</p>
-
       <ul class="list-group">
         <li id="bg-change">
           <div class="d-flex justify-content-between">
@@ -197,7 +202,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script>
           var clickCounts = 0;
-          $(#totalContributions).text();
+          $("#totalContributions").text();
           $(document).ready(function() {
           $('.btn-api').click(function () {
             console.log("It clicks:", clickCounts)
@@ -241,6 +246,10 @@
                   }});
           });
         </script>
+        </li>
+        </ul>
+        </div>
+        </section>
 
   
 

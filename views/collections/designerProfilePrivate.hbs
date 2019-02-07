@@ -28,13 +28,13 @@
   <div class="shadow-lg p-3 mb-5 bg-white rounded">
   <div class="container">
         <div class="col-lg-4 profile-info">
-          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="/images/nickpettit.jpg" alt="Photograph of Nick Pettit">
+          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="{{designer.profilePicturePath}}" alt="Photograph of Nick Pettit">
         </div>
         <div class="col-lg-5">
-          <h2>Nick Pettit</h2>
-          <p class="text-muted">Orlando, FL</p>
-          <p>Hi, my name is Nick! I'm a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.</p>
-          <p><a class="btn btn-block btn-primary" href="#">Message Nick</a></p>
+          <h2>Name: {{designer.fullname}}</h2>
+          <p class="text-muted">Location: {{designer.currentLocation}}</p>
+          <p>About..{{designer.about}}</p>
+          <p><a class="btn btn-block btn-primary" href="/enterCollection">Create Collection</a></p>
         </div>
         </div>  
   </span>
@@ -44,22 +44,17 @@
 <div class="container"><h1 class="text-center">Here are my collections</h1></div>
 
 <section>
+   {{#each collection}} 
   <div class="container collectionCard"><br>
-    <h3>This will be the collection title</h3>
     
-    <p>Here will be the description of the collection and what type of product they plan it to be</p>
+    <h3>{{this.collectionName}}</h3>
+   
+    <p>{{this.storyBehind}}</p>
     <h4>Sketchbook Samples</h4>
     <section class="gallery d-flex flex-wrap">
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-        <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
+        {{#each this.collectionPicturePath}}
+        <a href="#"><img style="width:200px;height:200px;" src="{{this}}"></a>
+        {{/each}}
   <br>
   <br>
     <div class="container-fluid">
@@ -106,12 +101,12 @@
                   <br>
                   <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
 									<div class="col-sm-10">
-										<h4 class="nomargin">Denim</h4>
+										<h4 class="nomargin">{{this.materialType}}</h4>
 										<p>We accept any types of Denim that are not ripped. For ripped denim, the final price payable will only be after inspection.</p>
 									</div>
 								</div>
 							</td>
-							<td data-th="Quantity"><br>20 KGs</td>
+							<td data-th="Quantity"><br>{{this.amount}}</td>
 							<td data-th="Subtotal" class="text-center"><br>1.99</td>
               <td data-th="Subtotal" class="text-center"><br>1.99</td>
 						</tr>
@@ -150,10 +145,15 @@
   <div class="container">
     <!-- schedule -->
       <h1 id="schedule" class="display-4 text-center my-5 text-muted">23 Contributions Made</h1>
-      <p>17 collected, 5 in process, 1 rejected</p>
+      <p><span class="processed">17</span> collected, <span class="pre-approved">5</span> in process, <span class="rejected">1</span> rejected</p>
+      <script>
+        var $processed = $(".processed");
+        var $preApproved = $(".pre-approved");
+        var $rejected = $(".rejected")
 
-      <ul class="list-group">
-        <li class="list-group-item-danger">
+      </script>
+     <ul class="list-group">
+        <li id="bg-change">
           <div class="d-flex justify-content-between">
             <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
             <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
@@ -172,94 +172,57 @@
                 <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
           </section>
           <br><br>
-        </li>
-        <li class="list-group-item-warning">
-          <div class="d-flex justify-content-between">
-            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-          </div>
-          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
-          <p class="mb-1">Message/Story</p>
-          <br>
-            <section class="gallery d-flex flex-wrap">
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-          </section>
-          <br><br>
-        </li>
-        </li>
-        <li class="list-group-item-success">
-          <div class="d-flex justify-content-between">
-            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-          </div>
-          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
-          <p class="mb-1">Message/Story</p>
-          <br>
-            <section class="gallery d-flex flex-wrap">
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-          </section>
-          <br><br>
-        </li>
-        </li>
-        <li class="list-group-item-warning-light">
-          <div class="d-flex justify-content-between">
-            <h5 class="mb-1">Contribution of 2.4 KGs worth $35</h5>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-            <span class="badge badge-pill badge-info p-2">0.3 KGs of Denim</span>
-          </div>
-          <p class="mb-1">Name, Email, Phone number, Upcycle Type</p>
-          <p class="mb-1">Message/Story</p>
-          <br>
-            <section class="gallery d-flex flex-wrap">
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-                <a href="#"><img style="width:80px;height:80px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
-          </section>
-          <br><br>
-          <button>Set Approval Status</button>
+          <button class="btn-api" id="changeColor">Set Approval Status</button>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script>
-            $(() => {
-                'use strict';
-                $('button').click(function() {
-                    $(this).toggleClass('pressed');
-                });
-            });
-        </script>
-        <style>
-            button {
-                background-color: white;
-            }
+          var clickCounts = 0;
+          $('#totalContributions').text();
+          $(document).ready(function() {
+          $('.btn-api').click(function () {
+            console.log("It clicks:", clickCounts)
+            var $this = $(this);
+            var words = $('.btn-api');
+            var $bgColor = $('#bg-change');
+            console.log(words.text());
+            
 
-            button.pressed {
-                background-color:#dff0d8;x`
-            }
-        </style>
-        <br>
+            if(clickCounts === 0){
+              $this.removeClass('bg-act-green');
+              $bgColor.removeClass("list-group-item-success");
+              words.text("No offer update given");
+              clickCounts++;
+
+            } else if (clickCounts === 1) {
+              $this.addClass('bg-act-red');
+              words.text("Offer Rejected");
+              $bgColor.addClass("list-group-item-danger")
+              clickCounts++;
+              console.log("Red loop:", clickCounts, $this, words.text())
+              } else 
+              if (clickCounts == 2) {
+                $this.removeClass('bg-act-red')
+                $this.addClass('bg-act-yellow');
+                $bgColor.removeClass("list-group-item-danger")
+                $bgColor.addClass("list-group-item-warning")
+                words.text("Offer approved for pre-processing");
+                clickCounts++;
+                console.log("Yellow loop:", clickCounts, $this)
+                } else 
+                if (clickCounts == 3) {
+                  $this.removeClass('bg-act-yellow')
+                  $this.addClass('bg-act-green');
+                  $bgColor.removeClass("list-group-item-warning");
+                  $bgColor.addClass("list-group-item-success");                  
+                  words.text("Your processing is now complete!");
+                  clickCounts++;
+                  clickCounts = clickCounts % 4;
+                  console.log("Green loop:", clickCounts, $this)
+                  }});
+          });
+        </script>
         </li>
-        </li>
-      </ul><!-- /schedule -->
-  </div>
-</section>
-</div>
+        </ul>
+ {{/each}}
 
 </section>
 <br>

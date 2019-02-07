@@ -7,8 +7,8 @@ const CollectionSchema = mongoose.Schema({
   fabricWeight: {type: String, required: true},
   amount: {type: String, required: true},
   owner: { type : mongoose.Schema.Types.ObjectId, ref: 'User' },
-  collectionPicturePath: String,
-  collectionPictureName:String,
+  collectionPicturePath: [],
+  collectionPictureName: [],
 })
 
 const Collection = mongoose.model('Collection', CollectionSchema);

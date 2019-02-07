@@ -1,8 +1,10 @@
+  <h3 style="color:red">{{message}}</h3>
+
 <div>
-    <form action="/signup" method="POST" enctype="multipart/form-data">
+    <form action="/signup-user" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" id="name">
+        <input type="text" name="fullname" class="form-control" id="name">
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -17,10 +19,25 @@
         <label for="exampleInputLocation1">Phone number</label>
         <input type="number" name="phone" class="form-control" id="phone">
       </div>
+        <div class="form-group">
+    <label for="exampleInputLocation1">Current Location</label>
+    <input type="text" name="currentLocation" class="form-control" id="exampleInputLocation1" placeholder="Ex. Berlin">
+  </div>
+  
       <div class="form-group">
         <label for="exampleInputLocation1">Zip Code</label>
         <input type="number" name="zipcode" class="form-control" id="zipcode">
       </div>
+        <div class="form-group">
+    <label for="exampleTextarea">About</label>
+    <textarea class="form-control" name="about" id="exampleTextarea" rows="3" placeholder="Tell everyone a bit about yourself!"></textarea>
+  </div>
+      <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" name="profilepic" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </div>
+      <!--
       <table id="myTable" class=" table order-list">
             <td>Type of Fabric</td>
             <td>Amount of Fabric available</td>
@@ -62,6 +79,7 @@
             </tr>
         </tfoot>
       </table>
+      -->
       <button type="submit" class="btn btn-primary">Submit</button>
      </form>            
    <footer></footer>
