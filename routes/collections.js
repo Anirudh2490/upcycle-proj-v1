@@ -18,21 +18,6 @@ function checkCategory(category) {
   }
 } 
 
-// authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
-//   Collection.find({owner: req.user._id})
-//     .then((collections)=>{
-//       console.log(collections)
-//       User.find({_id:req.user._id})
-//       .then((user)=>{
-//         console.log(user)
-//         res.render('collections/collectionDesignerView',{
-//           collections: collections, 
-//           user: user[0]
-//         })
-//       })
-//     })
-//   })
-
 authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req, res, next) => {
   Collection.findOne({_id:req.params.collectionId}).then(collections=>{
     res.render("collections/viewCollection", {collections:collections});
@@ -54,20 +39,6 @@ authRoutes.get('/sellClothesForm', checkCategory('seller'), (req, res, next) => 
 
 });
 
-// authRoutes.get('/collectionDesignerView', checkCategory('designer'), (req, res, next) => {
-//   Collection.find({owner: req.user._id})
-//     .then((collections)=>{
-//       console.log(collections)
-//       User.find({_id:req.user._id})
-//       .then((user)=>{
-//         console.log(user)
-//         res.render('collections/collectionDesignerView',{
-//           collections: collections, 
-//           user: user[0]
-//         })
-//       })
-//     })
-//   })
 
 authRoutes.get('/designer', checkCategory(), (req, res, next) => {
   User.findOne({_id:req.user._id}).then((designer)=>{
@@ -83,14 +54,21 @@ authRoutes.get('/designer', checkCategory(), (req, res, next) => {
 // <------------ All the public views are here ------------------>
 
 authRoutes.get('/collections', (req, res, next) => {
-   res.render("collections/publicView/collections");
+  Collection.find().then(collections=>{
+      res.render("collections/publicView/collections",{
+        collections:collections,
+       });
+    })
 });
+
+
+
 
 authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
-authRoutes.get('/designerProfileView', (req, res, next) => {
+authRoutes.get('/123', (req, res, next) => {
   res.render("collections/publicView/designerProfileView");
 });
 
