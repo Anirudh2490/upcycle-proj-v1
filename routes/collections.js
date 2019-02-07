@@ -54,15 +54,14 @@ authRoutes.get('/designer', checkCategory(), (req, res, next) => {
 // <------------ All the public views are here ------------------>
 
 authRoutes.get('/collections', (req, res, next) => {
-  Collection.find().then(collections=>{
+  Collection.find()
+    .populate('owner')
+    .then(collections=>{
       res.render("collections/publicView/collections",{
-        collections:collections,
-       });
-    })
+        collections: collections,
+        });
+      })
 });
-
-
-
 
 authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
