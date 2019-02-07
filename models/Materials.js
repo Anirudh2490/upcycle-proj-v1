@@ -7,6 +7,9 @@ const MaterialsSchema = mongoose.Schema({
   phone: {type: Number},
   sellingChoice: {type:String, enum: ['Sell my clothes', 'Upcycle clothes into something cool', 'Give the money now, get paid later']},
   message: {type:String},
+  designer: { type : mongoose.Schema.Types.ObjectId, ref: 'User' },
+  offerPicturePath: [],
+  offerPictureName: []
 })
 const Materials = mongoose.model('Materials', MaterialsSchema);
 module.exports = Materials;
