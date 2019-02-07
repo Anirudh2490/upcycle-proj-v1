@@ -176,13 +176,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script>
           var clickCounts = 0;
-          $('#totalContributions').text();
+          $("#totalContributions").text();
           $(document).ready(function() {
           $('.btn-api').click(function () {
             console.log("It clicks:", clickCounts)
             var $this = $(this);
             var words = $('.btn-api');
             var $bgColor = $('#bg-change');
+            var $processed = $(".processed");
+            var $preApproved = $(".pre-approved");
+            var $rejected = $(".rejected")
+            console.log("processing count")
+            
+            
             console.log(words.text());
             
 
@@ -205,6 +211,7 @@
                 $bgColor.removeClass("list-group-item-danger")
                 $bgColor.addClass("list-group-item-warning")
                 words.text("Offer approved for pre-processing");
+                $preApproved.text($('.list-group-item-warning').length);
                 clickCounts++;
                 console.log("Yellow loop:", clickCounts, $this)
                 } else 
@@ -212,8 +219,10 @@
                   $this.removeClass('bg-act-yellow')
                   $this.addClass('bg-act-green');
                   $bgColor.removeClass("list-group-item-warning");
-                  $bgColor.addClass("list-group-item-success");                  
+                  $bgColor.addClass("list-group-item-success");
+                  $processed.text($('.list-group-item-success').length);                  
                   words.text("Your processing is now complete!");
+                  $rejected.text($('.list-group-item-danger').length);
                   clickCounts++;
                   clickCounts = clickCounts % 4;
                   console.log("Green loop:", clickCounts, $this)

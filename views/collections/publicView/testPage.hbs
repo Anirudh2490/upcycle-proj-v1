@@ -164,20 +164,8 @@
   <div class="container">
     <!-- schedule -->
       <h1 id="schedule" class="display-4 text-center my-5 text-muted"><span id="totalContributions">23</span> Contributions Made</h1>
-      <p><span class="processed">17</span> collected, <span class="pre-approved">5</span> in process, <span class="rejected">1</span> rejected</p>
-      <script>
-        $(document).ready(function() {
-         $('.btn-api').click(function () { 
-          var $processed = $(".processed");
-          var $preApproved = $(".pre-approved");
-          var $rejected = $(".rejected")
-          console.log("processing count")
-          $processed.text(() => $('.list-group-item-success').length);
-          $preApproved.text(() => $('.list-group-item-warning').length);
-          $rejected.text(() => $('.list-group-item-danger').length);
-        })
-        });
-      </script>
+      <p><span class="processed">17</span> collected, <span class="pre-approved">5</span> in process, <span class="rejected"></span> rejected</p>
+
       <ul class="list-group">
         <li id="bg-change">
           <div class="d-flex justify-content-between">
@@ -209,6 +197,12 @@
             var $this = $(this);
             var words = $('.btn-api');
             var $bgColor = $('#bg-change');
+            var $processed = $(".processed");
+            var $preApproved = $(".pre-approved");
+            var $rejected = $(".rejected")
+            console.log("processing count")
+            
+            
             console.log(words.text());
             
 
@@ -231,6 +225,7 @@
                 $bgColor.removeClass("list-group-item-danger")
                 $bgColor.addClass("list-group-item-warning")
                 words.text("Offer approved for pre-processing");
+                $preApproved.text($('.list-group-item-warning').length);
                 clickCounts++;
                 console.log("Yellow loop:", clickCounts, $this)
                 } else 
@@ -238,8 +233,10 @@
                   $this.removeClass('bg-act-yellow')
                   $this.addClass('bg-act-green');
                   $bgColor.removeClass("list-group-item-warning");
-                  $bgColor.addClass("list-group-item-success");                  
+                  $bgColor.addClass("list-group-item-success");
+                  $processed.text($('.list-group-item-success').length);                  
                   words.text("Your processing is now complete!");
+                  $rejected.text($('.list-group-item-danger').length);
                   clickCounts++;
                   clickCounts = clickCounts % 4;
                   console.log("Green loop:", clickCounts, $this)
