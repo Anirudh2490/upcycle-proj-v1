@@ -34,7 +34,7 @@ authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next)
 
 });
 
-authRoutes.get('/sellClothesForm', checkCategory('seller'), (req, res, next) => {
+authRoutes.get('/sellClothesForm', (req, res, next) => {
   res.render("seller/sellClothesForm");
 
 });
@@ -52,6 +52,8 @@ authRoutes.get('/designer', checkCategory(), (req, res, next) => {
   });
 
 // <------------ All the public views are here ------------------>
+
+
 
 authRoutes.get('/collections', (req, res, next) => {
   Collection.find()
@@ -92,6 +94,9 @@ authRoutes.get('/collections/:collectionId', (req, res, next) => {
   })  
 });
 
+
+
+
 // <------------ End of public views are here ------------------>
 
 authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,next)=>{
@@ -111,7 +116,7 @@ authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,
     amount:amount,
     owner: req.user._id,
     collectionPicturePath:collectionPicturePath,
-    collectionPictureName,collectionPictureName
+    collectionPictureName:collectionPictureName
 
   })
   
@@ -125,5 +130,47 @@ authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,
     }
   })
 })
+
+
+authRoutes.post('/sellClothesForm', uploadCloud.array('sellerForm'),(req,res,next)=>{
+  const name = req.body.name;
+  const phone = req.body.phone;
+  const email = req.body.email;
+  const upcyleType = req.body.need;
+  const amount = req.body.amount;
+  const offerPicturePath = req.files.map((f) => f.url);
+  const offerPictureName = req.files.map((f) => f.originalname);
+
+  const newSeller = new Materials({
+    name: name,
+    phone: phone,
+    fabricTypes: fabricTypes,
+    fabricWeight:fabricWeight,
+    amount:amount,
+    designer: req.user._id,
+    offerPicturePath:offerPicturePath,
+    offerPictureName:offerPictureName
+  })
+
+  newSeller.save((err) => {
+    if (err) {
+      res.render('seller/sellClothesForm', {
+        message: 'Something went wrong, please try again later.'
+      })
+    } else {
+      res.redirect('/designer')
+   }
+  })
+})
+
+//  //_id: mongoose.Schema.Types.ObjectId,
+//  fullname: {type: String, required: true},
+//  email: {type: String, required: true},
+//  phone: {type: Number},
+//  sellingChoice: {type:String, enum: ['Sell my clothes', 'Upcycle clothes into something cool', 'Give the money now, get paid later']},
+//  message: {type:String},
+//  offerPicturePath: [],
+//  offerPictureName: []
+// })
 
 module.exports = authRoutes;
