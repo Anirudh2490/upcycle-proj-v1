@@ -63,12 +63,21 @@ authRoutes.get('/collections', (req, res, next) => {
       })
 });
 
+authRoutes.get('/collections/:userId', (req, res, next) => {
+  User.findOne({_id:req.params.userId}).then(user=>{
+    res.render("collections/publicView/designer", {user:user});
+  })  
+});
+
+
+
+
 authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
 authRoutes.get('/123', (req, res, next) => {
-  res.render("collections/publicView/designerProfileView");
+  res.render("collections/publicView/designer");
 });
 
 authRoutes.get('/test', (req, res, next) => {

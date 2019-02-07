@@ -20,19 +20,17 @@
             </ul>
           </nav>
       </header>
-
-      <h1>HELLO {{user.[0].fullname}}</h1>
       
 <!--      <section class="featured"></section>-->
       
       <section class="row">
         <div class="col-lg-4 profile-info">
-          <img class="float-left" src="nickpettit.jpg" alt="Photograph of Nick Pettit">
-          <h2>Nick Pettit</h2>
-          <p class="text-muted">Orlando, FL</p>
+          <img class="float-left" src="{{user.profilePicturePath}}" style="width:50%" alt="Photograph of Nick Pettit">
+          <h2>{{user.fullname}}</h2>
+          <p class="text-muted">{{user.currentLocation}}</p>
         </div>
         <div class="col-lg-5">
-          <p>Hi, my name is {{user.email}} I'm a teacher at Treehouse and I enjoy designing websites.</p>
+          <p>{{user.about}}</p>
         </div>
         <div class="col-lg-3">
           <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
@@ -44,7 +42,7 @@
       {{#each collections}}
       <section class="row">
         <div class="card" style="width: 18rem;">
-          <img cl ass="card-img-top" src={{this.collectionPicturePath}} width="50%" alt="Card image cap">
+          <img class="card-img-top" src="{{this.collectionPicturePath}}" width="50%" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{this.collectionName}}</h5>
             <p class="card-text">{{this.storyBehind}}</p>
@@ -54,48 +52,6 @@
       </section>
        {{/each}}
   
-  <div class="container">
-<header class="header_area">
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-header">
-        <h1>Reborn</h1>
-      </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active">
-        <a class="nav-link" href="#">How It Works</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">Why it matters</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">Collections</a>
-      </li>
-      <li>
-        <a class="nav-link" href="#">Designer Login</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<section>
-  <span class="border">
-  <div class="shadow-lg p-3 mb-5 bg-white rounded">
-  <div class="container">
-        <div class="col-lg-4 profile-info">
-          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="/images/nickpettit.jpg" alt="Photograph of Nick Pettit">
-        </div>
-        <div class="col-lg-5">
-          <h2>Nick Pettit</h2>
-          <p class="text-muted">Orlando, FL</p>
-          <p>Hi, my name is Nick! I'm a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.m a teacher at Treehouse and I enjoy designing websites.</p>
-          <p><a class="btn btn-block btn-primary" href="#">Message Nick</a></p>
-        </div>
-        </div>  
-  </span>
-</section>
-<br>
-<br>
-<div class="container"><h1 class="text-center">Here are my collections</h1></div>
 
 <section>
   <div class="container collectionCard"><br>
