@@ -90,12 +90,13 @@ authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
-authRoutes.get('/designerProfileView', (req, res, next) => {
-  res.render("collections/publicView/designerProfileView");
-});
 
 authRoutes.get('/test', (req, res, next) => {
   res.render("collections/publicView/testPage");
+});
+
+authRoutes.get('/12345', (req, res, next) => {
+  res.render("collections/publicView/designer");
 });
   
 
