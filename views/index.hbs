@@ -1,31 +1,21 @@
 {{!-- <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p> --}}
-<header class="header_area">
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top navbar-color">
       <div class="navbar-header">
-        <h1>Reborn</h1>
+        <a href="/"><h1 class="reborn">Reborn</h1></a>
       </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="active">
-        <a class="nav-link" href="#">How It Works</a>
-      </li>
-      <li>
-        <a class="nav-link" href="">Why it matters</a>
-      </li>
-      <li>
-        <a class="nav-link" href="/collections">Collections</a>
-      </li>
-      <li>
-        <a class="nav-link" href="/login">Designer Login</a>
-      </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav navbar-right spacing">
+            <a class="nav-item nav-link spacing" href="#home">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link spacing" href="#designers">Designers</a>
+            <a class="nav-item nav-link spacing" href="#howItWorks">How it works</a>
+            <a class="nav-item nav-link spacing" href="#whyItMatters">Why it matters</a>
+          </div>
   </nav>
-</header>
 
-
-<section class="welcome_area bg-img background-overlay" style="background-image: url(images/bg-img/bg-1.jpg);">
-        <div class="container d-flex h-100">
+<section class="welcome_area bg-img background-overlay welcome-area-position" style="background-image: url(images/bg-img/bg-1.jpg);">
+        <div class="container d-flex h-100" id="home">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="hero-content">
@@ -43,27 +33,25 @@
     </div>
 </section>
 
-<section>
-<div style="background:transparent !important" class="jumbotron jumbotron-fluid bg-info text-white">
-      <div class="container text-sm-center pt-6">
+<section class="designer-registration" style="background-image: url(images/bg-img/)" id="designers">
+<br><br><br><br><br><br><br><br><br><br><br>
+      <div class="container text-sm-center">
         <h2 class="display-2">Are you a designer looking to adopt upcycle practices?</h2>
         <p class="lead">Start sourcing pro-owned fabric for your upcoming collection!</p>
         <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
           <a type="button" class="btn btn-light btn-lg" href="/signup-designer">Register now</a>
           <a type="button" class="btn btn-light btn-lg" href="/login">Already a member? Login here</a>
-        </div>
-      </div><br>
-      
-</div>
+        </div><br>
+      </div>
 </section>
-
+<br><br><br><br><br>
 <section class="how-it-works section-padding-80 clearfix">
-        <div class="container-fluid">
+        <div class="container-fluid" id="howItWorks">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
                         <div class="container">
-                            <img class="container collectionCard" src="images/how-it-works.jpg"
+                            <img class="collectionCard" src="images/how-it-works.jpg"
                         </div>
                     </div>   
                 </div>
@@ -73,9 +61,9 @@
 
 
 
-
+<br><br><br><br><br><br>
 <section class="why-it-matters section-padding-100 clearfix">
-        <div class="container">
+        <div class="container" id="whyItMatters">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
@@ -84,7 +72,7 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-4">
           <div class="card mb-3">
-            <img class="card-img-top" src="img/vivianne.png" alt="Vivianne">
+            <img class="card-img-top">
             <div class="card-body">
               <h4 class="card-title">Eighty billion</h4>
               <p class="card-text">Pieces of clothing are consumed globally every year!</p>
@@ -94,7 +82,7 @@
 
 				<div class="col-md-6 col-lg-4">
           <div class="card mb-3">
-            <img class="card-img-top" src="img/nodestradamus.png" alt="NodeStradamus">
+            <img class="card-img-top">
             <div class="card-body">
               <h4 class="card-title">32 million Olympic swimming pools</h4>
               <p class="card-text">"The volume of water consumed by apparel production each year</p>
@@ -104,7 +92,7 @@
 
 				<div class="col-md-6 col-lg-4">
 			    <div class="card mb-3">
-			      <img class="card-img-top" src="img/robbie.png" alt="Robbie">
+			      <img class="card-img-top">
 			      <div class="card-body">
 			        <h4 class="card-title">Two-thirds of all fibers used have cotton</h4>
 			        <p class="card-text">Cotton-based fibers uses a vast amount of water to grow, placing substantial strain on the environmen</p>
@@ -114,30 +102,30 @@
 
 				<div class="col-md-6 col-lg-4">
 				  <div class="card mb-3">
-			      <img class="card-img-top" src="img/ecma.png" alt="Ecma">
+			      <img class="card-img-top">
 			      <div class="card-body">
-			        <h4 class="card-title">Ecma Scriptnstuff</h4>
-			        <p class="card-text">Ecma found her passion for programming and teaching over 15 years ago. She is excited to introduce you to all of the wonders of JavaScript.</p>
+			        <h4 class="card-title">Upto 7,000 liters of water</h4>
+			        <p class="card-text">Needed to produce one pair of jeans.</p>
 			      </div>
 			    </div>
 				</div>
 
 				<div class="col-md-6 col-lg-4">
 			    <div class="card mb-3">
-			      <img class="card-img-top" src="img/jay.png" alt="Jay">
+			      <img class="card-img-top">
 			      <div class="card-body">
-			        <h4 class="card-title">Jay Query</h4>
-			        <p class="card-text">Jay is a developer, author of CSS: The Missing Manual, JavaScript &amp; jQuery: The Missing Manual, and web development teacher.</p>
+			        <h4 class="card-title">10% of the clothes</h4>
+			        <p class="card-text">That people donate to thrift stores or charities get sold, the rest goes to landfill</p>
 			      </div>
 			    </div>
 				</div>
 
 				<div class="col-md-6 col-lg-4">
 			    <div class="card">
-			      <img class="card-img-top" src="img/json.png" alt="Json">
+			      <img class="card-img-top" {{!-- src="" alt="Json"--}}> 
 			      <div class="card-body">
-			        <h4 class="card-title">Json Babel</h4>
-			        <p class="card-text">All of his professional life, Json has worked with computers online; he is a polyglot programmer and likes using the right tools for the job.</p>
+			        <h4 class="card-title">200 years</h4>
+			        <p class="card-text">Number of years clothes made from polyester can take to break down.</p>
 			      </div>
 			    </div>
 				</div>

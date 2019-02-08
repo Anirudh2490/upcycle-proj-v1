@@ -21,8 +21,8 @@
      <div class="container">
         <table id="myTable" class=" table order-list">
             <td>Type of Fabric</td>
-            <td>Amount of Fabric needed</td>
-            <td>I'm willing to pay</td>
+            <td>Fabric needed (per KG)</td>
+            <td>Euros/KG offered</td>
           <tbody>
               <tr>
                <td class="col-sm-4">
@@ -40,10 +40,10 @@
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
-                 </select>per KG
+                 </select>
                </td>
                <td class="col-sm-4">
-                <input name="amount" type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"> Euros/KG
+                <input name="amount" type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                </td>
               <td class="col-sm-2"><a class="deleteRow"></a>
                 </td>
@@ -63,27 +63,29 @@
   <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+{{!-- --------- This is the JQUERY -------------- --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+      $(document).ready(function () {
+        var counter = 0;
+        $("#addrow").on("click", function () {
+        var newRow = $("<tr>");
+        var cols = "";
 
-{{!-- This file, we will have the designer enter details of the collection
-1. Type of Fabric
-2. Quantity of Fabric needed
-3. Amount of money per unit of Fabric (ex. Per Kg of Denim costs ??)
-4. Description of the collection
-5. Upload Image of Fabric 
-<h4 style="color:rgb(220,20,20)">You are logged in</h4>
-<h1>enterCollection</h1>
+        cols += '<td class="col-sm-4"><select class="form-control" id="fabricTypes name="fabricTypes' + counter + '"><option>Denim</option><option>Wool</option><option>Cotton</option><option>Synthetics</option><option>Nylon</option></select></td>';        
+        cols += '<td class="col-sm-4"><select class="form-control" id="fabricWeight" name="fabricWeight"' + counter + '"><option>1</option><option>2</option><option>3</option><option>4</option></select></td>';
+        cols += '<td><input type="text" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="amount' + counter + '"/></td>';
 
-<form action="/enterCollection" method="post">
-  <label>Material Type</label>
-  <input type="text" name="materialType">
-  <label>Cost</label>
-  <input type="text" name="cost">
-  <label>weight</label>
-  <input type="text" name="weight">
-  
-  <button>Create collection</button>
+        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+        newRow.append(cols);
+        $("table.order-list").append(newRow);
+        counter++;
+    });
 
+    $("table.order-list").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();       
+        counter -= 1
+    });
+});
+</script>
 
-</form>
-
---}}

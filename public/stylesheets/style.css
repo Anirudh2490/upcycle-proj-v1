@@ -5,15 +5,49 @@ body {
   margin-top: 20px;
 }
 
+.reborn {
+  margin-top:20px;
+  margin-left: 103px;
+}
+
+.navbar-color {
+  background-color: white;
+}
+
+.spacing {
+  margin-top:30px;
+  margin-right: 40px;
+  font-size: 12pt;
+}
+
+.navbar-fixed-top {
+  position:fixed !important;
+}
+
+.designer-registration {
+  position: relative;
+  margin-bottom: 100px;
+  margin-left: 300px;
+}
+
+.designer-registration-text {
+  margin-top: 250px; 
+  margin-left:200px;
+}
+
 .jumbotron {
-  background-image: url('../img/jumbo-bg.jpg');
+  background-image: url('../images/bg-img/bg-1.jpg');
   background-size: cover;
 }
 
-.container.collectionCard  {
-  margin-top: 50px;
-  box-shadow: 0 0 30px black;
-  padding:0 15px 0 15px;
+.collectionCard  {
+  margin: 10px 0px 50px 0px; 
+  box-shadow: 0 0 20px rgb(41, 38, 38);
+}
+
+.whyItWorks {
+  position: relative;
+  height:300px;
 }
 
 .container.circle1{
@@ -38,6 +72,10 @@ body {
   background-color: #E6F4F7;
 }
 
+.designer-offers-section {
+  width: 100%; 
+}
+
 .active-border{
   position: relative;
   text-align: center;
@@ -50,6 +88,11 @@ body {
       linear-gradient(91deg, transparent 50%, #A2ECFB 50%),
       linear-gradient(90deg, #A2ECFB 50%, transparent 50%);
   
+}
+
+.offers {
+  position: relative;
+  width: 900px;
 }
 
 .bg-act-red {
