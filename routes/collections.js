@@ -67,6 +67,7 @@ authRoutes.get('/collections', (req, res, next) => {
 
 authRoutes.get('/collections/:userId', (req, res, next) => {
   User.findOne({_id:req.params.userId}).then(user=>{
+    console.log("this",user)
     res.render("collections/publicView/designer", {user:user});
   })  
 });

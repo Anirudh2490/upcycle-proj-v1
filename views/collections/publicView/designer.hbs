@@ -1,31 +1,48 @@
-
-
 <div class="container">
-      <header class="d-flex justify-content-between flex-wrap">
-        <h1>Re-Worn</h1>
-          <nav>
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Designers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-              </li>
-            </ul>
-          </nav>
-      </header>
-      
-<!--      <section class="featured"></section>-->
-      
-      <section class="row">
+<header class="header_area">
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <h1>Reborn</h1>
+      </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active">
+        <a class="nav-link" href="#">How It Works</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">Why it matters</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">Collections</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#">Designer Login</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+{{!-- -------- This section has been added by AB in reference to designerProfilePrivate --------       --}}
+<section>
+  <span class="border">
+  <div class="shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="container">
         <div class="col-lg-4 profile-info">
-          <img class="float-left" src="{{user.profilePicturePath}}" style="width:50%" alt="Photograph of Nick Pettit">
+          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="{{designer.profilePicturePath}}" alt="Photograph">
+        </div>
+        <div class="col-lg-5">
+          <h2>Name: {{designer.fullname}}</h2>
+          <p class="text-muted">Location: {{designer.currentLocation}}</p>
+          <p>About..{{designer.about}}</p>
+          <p><a class="btn btn-block btn-primary" href="/enterCollection">Message {{user.fullname}}</a></p>
+        </div>
+        </div>  
+  </span>
+</section>
+
+{{!-- -------- This section is the SAME as above but with different paths, has been added by Nacho ----------}}      
+<section class="row">
+  <div class="col-lg-4 profile-info">
+          <img class="float-left" src="{{user.profilePicturePath}}" style="width:50%">
           <h2>{{user.fullname}}</h2>
           <p class="text-muted">{{user.currentLocation}}</p>
         </div>
@@ -35,7 +52,9 @@
         <div class="col-lg-3">
           <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
         </div>
-      </section>
+</section>
+
+
       <br>
       <br>
       <h3>Check-out my collections</h3>
@@ -72,6 +91,7 @@
         <a href="#"><img style="width:200px;height:200px;" src="https://images.unsplash.com/photo-1481495278953-0967c9759b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"></a>
   <br>
   <br>
+    {{!-- THE FABRIC COLLECTION GOAL IS HERE AND COMMENTED OUT
     <div class="container-fluid">
        <div class="col-md-3 bit">
           <h2> Fabric Collection Goal</h2>
@@ -97,7 +117,8 @@
           <h2> Water saved</h2>
           <p class="btn prec">54 gallons</p>   
      </div>
-   </div>
+   </div> --}}
+
   <br>
   <br>
 	<table id="cart" class="table table-hover table-condensed">
@@ -165,90 +186,4 @@
 </div>
 
 </section>
-<br>
-<br>
-
-    <!--=====================================
-        FORM MODAL
-       =====================================-->
-
-     {{!-- <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register form" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-info text-white">
-            <h5 class="modal-title" id="exampleModalLabel">Register your pre-worns for sale</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!-- registration form -->
-            <form id="contact-form" method="post" action="contact.php" role="form">
-              <div class="messages"></div>
-                <div class="controls">
-                    <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="form_name">Firstname *</label>
-                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="number">Phone number *</label>
-                    <input id="number" type="text" name="phone" class="form-control" placeholder="Please enter your ph. number *" required="required" data-error="Phone number is required.">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_email">Email *</label>
-                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="form_need">What type of upcycling would you be open to</label>
-                    <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                        <option value=""></option>
-                        <option value="Request quotation">I want to sell my old clothes only</option>
-                        <option value="Request order status">I want to upcycle my old clothes into something cool</option>
-                        <option value="Other">Give away now, receive money on sale of upcycle</option>
-                    </select>
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-
-<div class="input-default-wrapper mt-5">
-  <span class="input-group-text mb-3" id="input2">Attach some photos of these clothes</span>
-  <input type="file" id="file-with-multi-file" class="input-default-js" data-multiple-target="{target} files selected">  
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="form_message">What were some nice memories with these clothes? *</label>
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <input type="submit" class="btn btn-success btn-send" value="Register Contribution">
-            </div>
-        </div>
-
-    </div>
-</form> --}}
-            <!-- /registration form -->
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
