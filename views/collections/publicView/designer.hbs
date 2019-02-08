@@ -27,20 +27,20 @@
   <div class="shadow-lg p-3 mb-5 bg-white rounded">
   <div class="container">
         <div class="col-lg-4 profile-info">
-          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="{{designer.profilePicturePath}}" alt="Photograph">
+          <img class="img-thumbnail float-left" style="width:300px;height:300px;" src="{{user.profilePicturePath}}" alt="Photograph">
         </div>
         <div class="col-lg-5">
-          <h2>Name: {{designer.fullname}}</h2>
-          <p class="text-muted">Location: {{designer.currentLocation}}</p>
-          <p>About..{{designer.about}}</p>
-          <p><a class="btn btn-block btn-primary" href="/enterCollection">Message {{user.fullname}}</a></p>
+          <h2>Name: {{user.fullname}}</h2>
+          <p class="text-muted">Location: {{user.currentLocation}}</p>
+          <p>About..{{user.about}}</p>
+          <p><a class="btn btn-block btn-primary" href="/enterCollection">Message {{user.about}}</a></p>
         </div>
         </div>  
   </span>
 </section>
 
-{{!-- -------- This section is the SAME as above but with different paths, has been added by Nacho ----------}}      
-<section class="row">
+{{!-- -------- This section is the SAME as above but with different html, has been added by Nacho ----------}}      
+{{!-- <section class="row">
   <div class="col-lg-4 profile-info">
           <img class="float-left" src="{{user.profilePicturePath}}" style="width:50%">
           <h2>{{user.fullname}}</h2>
@@ -52,7 +52,7 @@
         <div class="col-lg-3">
           <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
         </div>
-</section>
+</section> --}}
 
 
       <br>
