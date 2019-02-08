@@ -18,25 +18,25 @@ function checkCategory(category) {
   }
 } 
 
-authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req, res, next) => {
-  Collection.findOne({_id:req.params.collectionId}).then(collections=>{
-    res.render("collections/viewCollection", {collections:collections});
-  })
-});
+//This view no longer exists
+// authRoutes.get('/viewCollection/:collectionId', checkCategory('designer'), (req, res, next) => {
+//   Collection.findOne({_id:req.params.collectionId}).then(collections=>{
+//     res.render("collections/viewCollection", {collections:collections});
+//   })
+// });
 
   authRoutes.get('/enterCollection', checkCategory(), (req, res, next) => {
     res.render("collections/enterCollection");
-  
 });
 
-authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next) => {
-  res.render("collections/collectionDetails");
+//This view no longer exists
+// authRoutes.get('/collectionDetails', checkCategory('designer'), (req, res, next) => {
+//   res.render("collections/collectionDetails");
 
-});
+// });
 
 authRoutes.get('/sellClothesForm', (req, res, next) => {
   res.render("seller/sellClothesForm");
-
 });
 
 
@@ -67,11 +67,22 @@ authRoutes.get('/collections', (req, res, next) => {
 
 authRoutes.get('/collections/:userId', (req, res, next) => {
   User.findOne({_id:req.params.userId}).then(user=>{
-    console.log("this",user)
-    res.render("collections/publicView/designer", {user:user});
-  })  
+    Collection.find({owner:req.params.userId}).then((collection)=>{
+      res.render("collections/publicView/designer", {user:user, collection:collection});
+    })
+  })
 });
 
+// authRoutes.get('/designer', checkCategory(), (req, res, next) => {
+//   User.findOne({_id:req.user._id}).then((designer)=>{
+//     Collection.find({owner:req.user._id}).then((collection)=>{
+//       res.render("collections/designerProfilePrivate", {
+//         designer:designer,
+//         collection:collection
+//         });
+//       })
+//     })  
+//   });
 
 
 
@@ -79,21 +90,24 @@ authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
 
-authRoutes.get('/123', (req, res, next) => {
-  res.render("collections/publicView/designer");
-});
 
-authRoutes.get('/test', (req, res, next) => {
-  res.render("collections/publicView/testPage");
-});
+// THIS VIEW NO LONGER EXISTS
+// authRoutes.get('/123', (req, res, next) => {
+//   res.render("collections/publicView/designer");
+// });
+
+// THIS VIEW NO LONGER EXISTS
+// authRoutes.get('/test', (req, res, next) => {
+//   res.render("collections/publicView/testPage");
+// });
   
-
-authRoutes.get('/collections/:collectionId', (req, res, next) => {
-  //res.render("collections/publicView/collections");
-  Collection.findOne({_id:req.params.collectionId}).then(collections=>{
-  res.render("collections/publicView/collectionPublicView", {collections:collections});
-  })  
-});
+// THIS VIEW NO LONGER EXISTS
+// authRoutes.get('/collections/:collectionId', (req, res, next) => {
+//   //res.render("collections/publicView/collections");
+//   Collection.findOne({_id:req.params.collectionId}).then(collections=>{
+//   res.render("collections/publicView/collectionPublicView", {collections:collections});
+//   })  
+// });
 
 
 
