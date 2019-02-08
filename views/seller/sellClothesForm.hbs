@@ -8,8 +8,10 @@
 7. Upload Fabric
 8. Story behind the Fabric
 9. Donate --}}
-
-            <form id="contact-form" method="post" action="contact.php" role="form">
+{{#if message}}
+    <div style="color:red" class="error-message">{{ message }}</div>
+  {{/if}}
+            <form id="contact-form" method="post" action="/sellClothesForm" role="form" enctype="multipart/form-data">
               <div class="messages"></div>
                 <div class="controls">
                     <div class="row">
@@ -39,22 +41,53 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_need">What type of upcycling would you be open to</label>
-                    <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                        <option value=""></option>
-                        <option value="Request quotation">I want to sell my old clothes only</option>
-                        <option value="Request order status">I want to upcycle my old clothes into something cool</option>
-                        <option value="Other">Give away now, receive money on sale of upcycle</option>
-                    </select>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-
+    <div class="container">
+        <table id="myTable" class=" table order-list">
+            <td>Type of Fabric</td>
+            <td>Amount of Fabric selling</td>
+          <tbody>
+              <tr>
+               <td class="col-sm-4">
+                 <select name="fabricTypes" class="form-control" id="fabricTypes">
+                  <option>Denim</option>
+                  <option>Wool</option>
+                  <option>Cotton</option>
+                  <option>Synthetics</option>
+                   <option>Nylon</option>
+                 </select>
+               </td>
+               <td class="col-sm-4">
+                <select name="fabricWeight" class="form-control" id="fabricWeight">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                 </select>per KG
+               </td>
+              <td class="col-sm-2"><a class="deleteRow"></a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+      </table>
+    </div>
 <div class="input-default-wrapper mt-5">
   <span class="input-group-text mb-3" id="input2">Attach some photos of these clothes</span>
-  <input type="file" name='collectionPic' class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" multiple>  
+  <input type="file" name='sellerForm' class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" multiple>  
             </div>
           </div>
         </div>

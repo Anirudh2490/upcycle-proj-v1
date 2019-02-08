@@ -65,6 +65,15 @@ authRoutes.get('/collections', (req, res, next) => {
       })
 });
 
+authRoutes.get('/collections/:userId', (req, res, next) => {
+  User.findOne({_id:req.params.userId}).then(user=>{
+    res.render("collections/publicView/designer", {user:user});
+  })  
+});
+
+
+
+
 authRoutes.get('/designers', (req, res, next) => {
   res.render("collections/publicView/designerListPage");
 });
@@ -124,21 +133,24 @@ authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,
 
 
 authRoutes.post('/sellClothesForm', uploadCloud.array('sellerForm'),(req,res,next)=>{
-  const name = req.body.name;
+  const fullname = req.body.name;
   const phone = req.body.phone;
   const email = req.body.email;
-  const upcyleType = req.body.need;
   const amount = req.body.amount;
+  const fabricTypes = req.body.fabricTypes;
+  const fabricWeight = req.body.fabricWeight;
+  const message = req.body.message;
   const offerPicturePath = req.files.map((f) => f.url);
   const offerPictureName = req.files.map((f) => f.originalname);
 
   const newSeller = new Materials({
-    name: name,
+    fullname: fullname,
+    email:email,
     phone: phone,
-    fabricTypes: fabricTypes,
+    fabricTypes:fabricTypes,
     fabricWeight:fabricWeight,
     amount:amount,
-    designer: req.user._id,
+    //designer: req.user._id,
     offerPicturePath:offerPicturePath,
     offerPictureName:offerPictureName
   })
