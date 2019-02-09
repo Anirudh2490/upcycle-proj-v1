@@ -39,19 +39,19 @@
             <div class="col-md-1">
                 <div class="form-group">
                     <label for="fabric">Fabric</label>
-                    <input id="number" type="text" name="fabric" class="form-control" readonly>
+                    <input id="number" type="text" name="fabric" value="{{fabricType}}" class="form-control" readonly="true">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="sellQty">Sell Quantity (in KG)</label>
-                    <input id="sellQty" type="number" name="sellQty" class="form-control" placeholder="Required Quantity" readonly>
+                    <input id="sellQty" type="text" name="sellQty" value={{fabricWeight}} class="form-control" readonly="true">
                 </div>
             </div> 
             <div class="col-md-2">
                 <div class="Unit Price">
                     <label for="unitPrice">Price per KG</label>
-                    <input id="unitPrice" type="number" name="unitPrice" class="form-control" placeholder="Unit Price" readonly>
+                    <input id="unitPrice" type="text" name="unitPrice" value="{{subtotal}}" class="form-control" readonly="true">
                 </div>
             </div>            
             {{!-- <div class="col-md-6">
@@ -125,3 +125,7 @@
 
     </div>
 </form>
+
+
+
+

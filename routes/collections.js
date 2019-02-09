@@ -100,8 +100,10 @@ authRoutes.get('/collections/:userId', (req, res, next) => {
 </script>  */
 
 authRoutes.post('/sellClothesForm', (req, res, next)=>{
-  console.log(req.body);
-  res.render('seller/sellClothesForm')
+  const {fabricType, fabricWeight, subtotal } = req.body
+
+  console.log(req.body)
+  res.render('seller/sellClothesForm', { fabricType, fabricWeight, subtotal})
   
 })
 
