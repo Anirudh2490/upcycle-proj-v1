@@ -51,6 +51,9 @@ authRoutes.get('/designer', checkCategory(), (req, res, next) => {
     })  
   });
 
+
+
+
 // <------------ All the public views are here ------------------>
 
 
@@ -72,6 +75,36 @@ authRoutes.get('/collections/:userId', (req, res, next) => {
     })
   })
 });
+
+/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+  $(function()){
+    var form = $(".submit-bid");
+    form.submit(function(event){
+      //Capture .requiredQuantity .unitPrice .sellQty
+        const fabric = $(".fabric").text();
+        let requiredQuantity = parseFloat($(".requiredQuantity").text());
+        let unitPrice = parseFloat($(".unitPrice").text());
+        let sellQty = parseFloat($(".sellQty").val());
+        $.post(
+          "/views/seller/sellerClothes.hbs",
+          {
+            fabric:fabric,
+            requiredQuantity:requiredQuantity,
+            unitPrice:unitPrice,
+            sellQty:sellQty
+          }
+        )
+    })
+  }
+</script>  */
+
+authRoutes.post('/sellClothesForm', (req, res, next)=>{
+  console.log(req.body);
+  res.render('seller/sellClothesForm')
+  
+})
+
 
 // authRoutes.get('/designer', checkCategory(), (req, res, next) => {
 //   User.findOne({_id:req.user._id}).then((designer)=>{
@@ -181,6 +214,9 @@ authRoutes.post('/sellClothesForm', uploadCloud.array('sellerForm'),(req,res,nex
   })
 })
 
+
+
+
 //  //_id: mongoose.Schema.Types.ObjectId,
 //  fullname: {type: String, required: true},
 //  email: {type: String, required: true},
@@ -192,3 +228,5 @@ authRoutes.post('/sellClothesForm', uploadCloud.array('sellerForm'),(req,res,nex
 // })
 
 module.exports = authRoutes;
+
+
