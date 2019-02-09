@@ -1,9 +1,7 @@
 
-  {{#if message}}
-    <div style="color:red" class="error-message">{{ message }}</div>
-  {{/if}}
+
 <h1> Start collecting fabric for your collection </h1>
-  <form action="/enterCollection" method="post" enctype="multipart/form-data">
+  <form action="/views/collections/designerProfilePrivate.hbs" method="post" enctype="multipart/form-data">
     <div class="form-group">
     <label for="exampleTextarea">Name your collection</label>
     <input name="collectionName" type="text" class="form-control" placeholder="Summer essentials? Winter collection?" aria-label="name" aria-describedby="basic-addon1">

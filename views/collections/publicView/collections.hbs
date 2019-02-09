@@ -23,7 +23,7 @@
 </header>
 
 <div class="collections-listpage-title container">
-  <h1 class="text-center">All Collections</h1>
+  <h1 class="text-center">All Designers</h1>
 </div>
 <section class="row">
   <div class="container mb-4">
@@ -45,7 +45,7 @@
                     <tbody>
                         {{#each collections}}
                         <tr>
-                            <td><img style="width:850px;" src="{{this.owner.profilePicturePath}}"/></td>
+                            <td><img style="width:128px;height:128px;" src="{{this.owner.profilePicturePath}}"/></td>
                             <td>{{this.collectionName}}</td>
                             <td><a href="/collections/{{this.owner._id}}">{{this.owner.fullname}}</td>
                             <td class="text-center">Berlin</td>

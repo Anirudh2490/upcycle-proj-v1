@@ -8,10 +8,7 @@
 7. Upload Fabric
 8. Story behind the Fabric
 9. Donate --}}
-{{#if message}}
-    <div style="color:red" class="error-message">{{ message }}</div>
-  {{/if}}
-            <form id="contact-form" method="post" action="/sellClothesForm" role="form" enctype="multipart/form-data">
+            <form id="contact-form" method="post" action="/views/collections/publicView/designer.hbs" role="form" enctype="multipart/form-data">
               <div class="messages"></div>
                 <div class="controls">
                     <div class="row">
@@ -38,14 +35,36 @@
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
-            <div class="col-md-6">
+       <div class="row">
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="fabric">Fabric</label>
+                    <input id="number" type="text" name="fabric" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="sellQty">Sell Quantity (in KG)</label>
+                    <input id="sellQty" type="number" name="sellQty" class="form-control" placeholder="Required Quantity" readonly>
+                </div>
+            </div> 
+            <div class="col-md-2">
+                <div class="Unit Price">
+                    <label for="unitPrice">Price per KG</label>
+                    <input id="unitPrice" type="number" name="unitPrice" class="form-control" placeholder="Unit Price" readonly>
+                </div>
+            </div>            
+            {{!-- <div class="col-md-6">
                 <div class="form-group">
                     <label for="form_need">What type of upcycling would you be open to</label>
                     <div class="help-block with-errors"></div>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <div class="col-md-6">
+
+        {{!-- CLOTHING CHOICES HAVE BEEN CLARIFIED FOR NOW --}}
+
+        {{!-- <div class="col-md-6">
           <div class="form-group">
     <div class="container">
         <table id="myTable" class=" table order-list">
@@ -84,7 +103,7 @@
             </tr>
         </tfoot>
       </table>
-    </div>
+    </div> --}}
 <div class="input-default-wrapper mt-5">
   <span class="input-group-text mb-3" id="input2">Attach some photos of these clothes</span>
   <input type="file" name='sellerForm' class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" multiple>  

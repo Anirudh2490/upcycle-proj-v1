@@ -113,8 +113,8 @@ authRoutes.get('/designers', (req, res, next) => {
 
 
 // <------------ End of public views are here ------------------>
-
-authRoutes.post('/enterCollection', uploadCloud.array('collectionPic'),(req,res,next)=>{
+//below is the info that's posted from 
+authRoutes.post('/views/collections/designerProfilePrivate.hbs', uploadCloud.array('collectionPic'),(req,res,next)=>{
   const collectionName = req.body.collectionName;
   const storyBehind = req.body.storyBehind;
   const fabricTypes = req.body.fabricTypes;

@@ -53,8 +53,6 @@
           <p><a class="btn btn-block btn-primary" href="#">Ask About this Collection</a></p>
         </div>
 </section> --}}
-
-
       <br>
       <br>
       <h3>Check-out my collections</h3>
@@ -102,13 +100,14 @@
 
   <br>
   <br>
+  <form id="submit-bid" method="POST" action="/views/seller/sellClothesForm.hbs">
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
-							<th style="width:50%">Fabric requirements</th>
-              <th style="width:10%">Quantity (KGs)</th>
+							<th style="width:40%">Fabric requirements</th>
+              <th style="width:20%">Required Quantity (KGs)</th>
 							<th style="width:10%">Price per KG</th>
-							<th style="width:20%">Upsell your fabric</th>
+							<th style="width:20%">Upsell fabric/KG</th>
 							<th style="width:10%">Subtotal</th>
 						</tr>
 					</thead>
@@ -119,25 +118,28 @@
                   <br>
                   <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
 									<div class="col-sm-10">
-										<h4 class="nomargin">Denim</h4>
+										<h4 class="fabric">{{this.fabricTypes}}</h4>
 										<p>Please note that the final indicated price will be paid after pre-inspection and approval.</p>
 									</div>
 								</div>
 							</td>
-							<td data-th="Quantity"><br>20 KGs</td>
-							<td data-th="Subtotal" class="text-center"><br>1.99</td>
+							<td data-th="Quantity"><br><span class="requiredQuantity">{{this.fabricWeight}}</span></td>
+							<td data-th="Subtotal" class="number text-center"><br><span class="unitPrice">{{this.amount}}</span></td>
               <td data-th="Price"><br>
-								<input type="number" class="text-center" value="0.85"> KG</span>
+								<input type="number" class="sellQty" value="0.0" min="0" max="{{this.fabricWeight}}">
 							</td>
-              <td data-th="Subtotal" class="text-center"><br>1.99</td>
+              <td data-th="Subtotal" class="text-center"><br><span class="subtotal">1.99</span></td>
 						</tr>
 					</tbody>
 					<tbody>
-
-  
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+          <script>
+            let requiredQuantity = parseFloat($(".requiredQuantity").text());
+            let unitPrice = parseFloat($(".unitPrice").text());
+            let subtotal = $(".subtotal");
+            subtotal.text(requiredQuantity*unitPrice);
+          </script>
 	{{!--------    End of products		 ------}}
-
-
 					<tfoot>
 						<tr>
 							<td colspan="2" class="hidden-xs"></td>
@@ -145,8 +147,32 @@
               <td><a class="btn btn-primary btn-lg" href="/sellClothesForm">Submit Bid</a></td>						</tr>
 					</tfoot>
 				</table>
+    </form>
 </div>
-
 </section>
 {{/each}}
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+  $(function()){
+    var form = $(".submit-bid");
+    form.submit(function(event){
+      //Capture .requiredQuantity .unitPrice .sellQty
+        const fabric = $(".fabric").text();
+        let requiredQuantity = parseFloat($(".requiredQuantity").text());
+        let unitPrice = parseFloat($(".unitPrice").text());
+        let sellQty = parseFloat($(".sellQty").val());
+        $.post(
+          "/views/seller/sellerClothes.hbs",
+          {
+            fabric:fabric,
+            requiredQuantity:requiredQuantity,
+            unitPrice:unitPrice,
+            sellQty:sellQty
+          }
+        )
+    })
+  }
+</script>
+
